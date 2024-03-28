@@ -3,7 +3,7 @@
 case "$1" in
     start)
         ulimit -s 2048
-        kill -9 `ps -ax | grep -Fi oscam | grep tuxbox | grep -v grep|grep -vE 'dpkg|opkg' | awk {'print $1'}` &> /dev/null 2>&1;
+        kill -9 `ps -ax | grep -Fi oscam | grep -v grep|grep -vE 'dpkg|opkg' | awk {'print $1'}` &> /dev/null 2>&1;
         /etc/oscam/oscam -b -c /etc/oscam/config --pidfile /tmp/oscam.pid  --restart 2
         ;;
     stop)
