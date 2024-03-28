@@ -9,4 +9,4 @@ chmod +x /etc/init.d/oscam
 update-rc.d oscam defaults
 echo "starte OSCAM"
 /etc/init.d/oscam start > /dev/null 2>&1
-chmod +x /etc/oscam/config/*
+
