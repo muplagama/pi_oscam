@@ -1,0 +1,28 @@
+#!/bin/sh
+
+case "$1" in
+    start)
+        ulimit -s 2048
+        kill -9 `ps -ax | grep -Fi oscam | grep tuxbox | grep -v grep|grep -vE 'dpkg|opkg' | awk {'print $1'}` &> /dev/null 2>&1;
+        /etc/oscam/oscam -b -c /etc/oscam/config --pidfile /tmp/oscam.pid  --restart 2
+        ;;
+    stop)
+        kill -9 `ps -ax | grep -Fi oscam | grep -v grep|grep -vE 'dpkg|opkg' | awk {'print $1'}` &> /dev/null 2>&1;
+        ;;
+    restart|reload)
+        $0 stop
+        sleep 1
+        $0 start
+        ;;
+    version)
+        echo "$CAMNAME"
+        ;;
+    info)
+        echo "$CAMNAME"
+        ;;
+    *)
+        echo "Usage: $0 start|stop|restart"
+        exit 1
+        ;;
+esac
+exit 0
