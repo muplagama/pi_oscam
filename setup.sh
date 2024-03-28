@@ -7,4 +7,6 @@ mkdir /etc/oscam/config
 wget -O /etc/init.d/oscam https://raw.githubusercontent.com/muplagama/pi_oscam/main/rc 
 chmod +x /etc/init.d/oscam
 update-rc.d oscam defaults
-/etc/init.d/oscam start
+echo "starte OSCAM"
+/etc/init.d/oscam start > /dev/null 2>&1
+chmod +x /etc/oscam/config/*
